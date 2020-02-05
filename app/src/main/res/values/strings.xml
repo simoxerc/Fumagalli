@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">FumagalliProject</string>
+    <string name="strLoginPage">Login Page</string>
+    <string name="strRegisterPage">Registration Page</string>
+    <string name="strChainPage">Chain Page</string>
+    <string name="strCartListPage">Cart List Page</string>
+    <string name="strMyProfilePage">My Profile Page</string>
+    <string name="strMarketListPage">Market List Page</string>
+    <string name="strMyCartPage">My Cart Page</string>
+    <string name="strCategoryListPage">Category List Page</string>
+    <string name="strProductListPage">Product List Page</string>
+    <string name="strMyOrdersPage">My Orders Page</string>
+    <string name="strTermsPage">Terms Page</string>
+    <string name="strLogin">Accedi</string>
+    <string name="strRegistration">Registrazione</string>
+    <string name="strBack">Indietro</string>
+    <string name="strEmail">Email</string>
+    <string name="strPassword">Password</string>
+    <string name="strName">Nome</string>
+    <string name="strSurname">Cognome</string>
+    <string name="strPhoneNumber">Numero Cellulare</string>
+    <string name="strBirthDate">Data di Nascita</string>
+    <string name="strFiscalCode">Codice Fiscale</string>
+    <string name="strMyOrders">I miei Ordini</string>
+    <string name="strLogout">Logout</string>
+    <string name="strTerms">Termini</string>
+    <string name="strConfirm">Conferma</string>
+    <string name="strReadTerms">Leggi i termini</string>
+    <string name="strCheckBoxTerms"> Dichiaro di aver letto e accettato l\'informativa sulla privacy. </string>
+    <string name="strCheckBoxNewsLetter"> Si desidero ricevere offerte speciali ed essere informato su promozioni e novità (facoltativo)</string>
+    <string name="strTotal"> Totale </string>
+    <string name="strQuantity"> Quantità </string>
+    <string name="strQuantitySelected"> Quantità Selezionata</string>
+    <string name="strCleanCart"> Pulisci Carrello </string>
+
+</resources>

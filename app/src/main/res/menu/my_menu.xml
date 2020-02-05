@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itmMyOrders"
+        android:title="@string/strMyOrders"/>
+
+    <item
+        android:id="@+id/itmTerms"
+        android:title="@string/strTerms" />
+
+    <item
+        android:id="@+id/itmLogout"
+        android:title="@string/strLogout"/>
+
+</menu>

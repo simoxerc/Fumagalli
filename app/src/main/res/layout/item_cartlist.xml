@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ItemCartContainerInfoMk"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_toLeftOf="@id/ItemCartContainerInfoCart"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:paddingLeft="10dp"
+        android:paddingStart="10dp"
+        android:layout_toStartOf="@id/ItemCartContainerInfoCart">
+
+        <TextView
+            android:id="@+id/tvItemCartMkName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            tools:targetApi="jelly_bean"/>
+
+        <TextView
+            android:id="@+id/tvItemCartMkAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            tools:targetApi="jelly_bean"/>
+
+        <TextView
+            android:id="@+id/tvItemCartMkCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            tools:targetApi="jelly_bean"/>
+
+        <TextView
+            android:id="@+id/tvItemCartMkPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            tools:targetApi="jelly_bean"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ItemCartContainerInfoCart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingRight="30dp"
+        android:layout_toLeftOf="@id/imgItemCartArrow"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/imgItemCartArrow"
+        android:paddingEnd="30dp">
+
+        <TextView
+            android:id="@+id/tvItemCartStrTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            android:text="@string/strTotal"
+            tools:targetApi="jelly_bean"/>
+
+        <TextView
+            android:id="@+id/tvItemCartPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="12sp"
+            tools:targetApi="jelly_bean"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgItemCartArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="10dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+
+
+</RelativeLayout>
