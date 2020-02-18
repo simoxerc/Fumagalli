@@ -143,6 +143,7 @@
                 android:textColor="@color/clLightBlue"
                 android:text="@string/strAdminInfo"
                 android:textSize="16sp" />
+
         </LinearLayout>
 
     </ScrollView>

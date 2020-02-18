@@ -63,7 +63,25 @@
                 android:value=".UI.Login">
             </meta-data>
         </activity>
-    </application>
+        <activity
+            android:name=".UI.RegisterMarket"
+            android:label="@string/strReadTerms"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".UI.RegisterEmployee"
+            android:label="Registra Dipendente"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.EmployeeList">
+            </meta-data>
+        </activity>
 
+        <activity android:name=".UI.EmployeeList"
+            android:label="Lista Dipendenti"
+            android:screenOrientation="portrait">
+        </activity>
+
+    </application>
 
 </manifest>

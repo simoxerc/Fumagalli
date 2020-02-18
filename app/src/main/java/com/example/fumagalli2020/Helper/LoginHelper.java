@@ -1,5 +1,4 @@
 package com.example.fumagalli2020.Helper;
-
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -9,7 +8,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
 public class LoginHelper {
     public boolean login(EditText edtEmail, TextInputLayout tilPassword){
         String email,pwd;
@@ -33,4 +31,5 @@ public class LoginHelper {
         else
             return true;
     }
+
 }

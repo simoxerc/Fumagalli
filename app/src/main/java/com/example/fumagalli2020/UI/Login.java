@@ -12,19 +12,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fumagalli2020.Helper.LoginHelper;
+import com.example.fumagalli2020.MainActivity;
 import com.example.fumagalli2020.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
     Button btnLogin;
     Button btnToRegistration;
+    Button button;
     private TextView tvReset,tvAdminInfo;
     private EditText edtEmail;
+    public Intent intent;
     private TextInputLayout tilPassword;
     public LoginHelper helper;
     @Override
@@ -33,31 +41,18 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         getSupportActionBar().hide();
-
         btnLogin = findViewById(R.id.btnLogEnter);
         btnToRegistration = findViewById(R.id.btnLogToRegistration);
         edtEmail = findViewById(R.id.edtLogEmail);
         tilPassword = findViewById(R.id.edtLogPassword);
         tvReset = findViewById(R.id.tvResetPassword);
         tvAdminInfo = findViewById(R.id.tvAdminInfo);
-
+        helper = new LoginHelper();
     }
 
     @Override
     protected void onStart(){
         super.onStart();
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(helper.login(edtEmail,tilPassword)){
-                    Toast.makeText(Login.this,"",Toast.LENGTH_LONG).show();
-                    gotoregistration();
-                }else{
-                    Toast.makeText(Login.this,"",Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
         btnToRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +74,47 @@ public class Login extends AppCompatActivity {
                 gotoadmininfo();
             }
         });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(helper.login(edtEmail,tilPassword)) {
+                    Toast.makeText(Login.this,"OK",Toast.LENGTH_LONG).show();
+                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                    DatabaseReference mDBRef;
+                        mDBRef = FirebaseDatabase.getInstance().getReference().child("Users").child(mAuth.getCurrentUser().getUid());
+                        ValueEventListener eventListener = new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for(DataSnapshot ds:dataSnapshot.getChildren()){
+                                    if(ds.getKey().equals("type")){
+                                        String tipo = ds.getValue(String.class);
+                                        if(tipo.equals("0"))
+                                            intent = new Intent(Login.this,RegisterMarket.class);
+                                        else if(tipo.equals("1"))
+                                            intent = new Intent(Login.this,EmployeeList.class);
+                                        else
+                                            intent = new Intent(Login.this,Login.class);
+                                        gotonewui(intent);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        };
+                        mDBRef.addListenerForSingleValueEvent(eventListener);
+                }else{
+                    Toast.makeText(Login.this,"Errore",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    private void gotonewui(Intent intent) {
+        startActivity(intent);
     }
 
     private void gotoregistration(){

@@ -47,4 +47,27 @@
     <string name="strAdInDesc">Descrizione pagina informazioni amministratore</string>
     <string name="strAdInEmail">Email: projectfumagalliids@gmail.com</string>
     <string name="strAdInPhone">Telefono: 333 33333333</string>
+    <string name="strMarketName">Ragione Sociale</string>
+    <string name="strMarketAddress">Indrizzo Negozio</string>
+    <string name="strMarketCity">Città Negozio</string>
+    <string name="strMarketCAP">CAP Negozio</string>
+    <string name="strMarketChain">Catena Negozio</string>
+    <string name="strMarketPhone">Telefono Negozio</string>
+    <string name="strMarketEmail">Email Negozio</string>
+    <string name="strLun">LUNEDÌ</string>
+    <string name="strMar">MARTEDÌ</string>
+    <string name="strMer">MERCOLEDÌ</string>
+    <string name="strGio">GIOVEDÌ</string>
+    <string name="strVen">VENERDÌ</string>
+    <string name="strSab">SABATO</string>
+    <string name="strDom">DOMENICA</string>
+    <string name="strContinued">Orario Continuato</string>
+    <string name="strOpen">APERTURA</string>
+    <string name="strClose">CHIUSURA</string>
+    <string name="strBtnRegMarket">Registra Negozio &amp; Procedi</string>
+    <string name="strRegMarketAdmin">Registra Amministratore Negozio</string>
+    <string name="strClosedDay">Giorno di Chiusura</string>
+    <string name="strAdd">Aggiungi</string>
+    <string name="strTimeTable">ORARIO</string>
+    <string name="strHyphen">-</string>
 </resources>

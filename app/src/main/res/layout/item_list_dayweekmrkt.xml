@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvItemNameDay"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_regular"
+        android:textSize="16sp"
+        android:textColor="@color/clBlack"/>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/chItemDayContinued"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strContinued"/>
+        <CheckBox
+            android:id="@+id/chItemDayClosed"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strClosedDay"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layItemDayMorn"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strTimeTable"/>
+        <EditText
+            android:id="@+id/edtItemDayOpenMorn"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:background="@drawable/first_custom_edit_text"
+            android:layout_marginLeft="10dp"
+            android:focusableInTouchMode="false"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/strHyphen"/>
+
+        <EditText
+            android:id="@+id/edtItemDayCloseMorn"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:background="@drawable/first_custom_edit_text"
+            android:layout_marginLeft="10dp"
+            android:focusableInTouchMode="false"
+            android:textSize="14sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layItemDayAfter"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/strTimeTable"/>
+        <EditText
+            android:id="@+id/edtItemDayOpenAfter"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:background="@drawable/first_custom_edit_text"
+            android:layout_marginLeft="10dp"
+            android:focusableInTouchMode="false"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/strHyphen"/>
+
+        <EditText
+            android:id="@+id/edtItemDayCloseAfter"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:background="@drawable/first_custom_edit_text"
+            android:layout_marginLeft="10dp"
+            android:focusableInTouchMode="false"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
