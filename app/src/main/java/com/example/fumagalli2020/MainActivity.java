@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.fumagalli2020.Class.Category;
 import com.example.fumagalli2020.Helper.LoginHelper;
+import com.example.fumagalli2020.UI.CategoryList;
 import com.example.fumagalli2020.UI.EmployeeList;
 import com.example.fumagalli2020.UI.Login;
 import com.example.fumagalli2020.UI.RegisterMarket;
@@ -45,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
                                 intent = new Intent(MainActivity.this,RegisterMarket.class);
                             else if(tipo.equals("1"))
                                 intent = new Intent(MainActivity.this,EmployeeList.class);
+                            else if(tipo.equals("2"))
+                                intent = new Intent(MainActivity.this, CategoryList.class);
                             else
                                 intent = new Intent(MainActivity.this,Login.class);
-                            startActivity(intent);
+                            gotonewui(intent);
                         }
                     }
                 }
@@ -62,4 +66,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    private void gotonewui(Intent intent){startActivity(intent);}
+
 }

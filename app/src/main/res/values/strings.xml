@@ -70,4 +70,5 @@
     <string name="strAdd">Aggiungi</string>
     <string name="strTimeTable">ORARIO</string>
     <string name="strHyphen">-</string>
+    <string name="strCategoryDesc">Descrizione</string>
 </resources>

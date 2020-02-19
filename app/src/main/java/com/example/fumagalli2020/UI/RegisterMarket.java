@@ -28,6 +28,8 @@ import com.example.fumagalli2020.ExpandableHeightListView;
 import com.example.fumagalli2020.Helper.RegisterMarketHelper;
 import com.example.fumagalli2020.R;
 
+import org.w3c.dom.Text;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,15 +52,24 @@ public class RegisterMarket extends AppCompatActivity {
     protected ArrayAdapter adptDaysOfWeek;
     protected ArrayAdapter adptChain;
     protected List<String> stringList = new ArrayList<String>();
-    protected String[][] businessHour = new String[7][4];
-    protected boolean[] continuedSchedule = new boolean[7];
-    protected boolean[] closedDays = new boolean[7];
+//    protected String[][] businessHour = new String[7][4];
+    protected List<String> businessHour = new ArrayList<String>();
+    protected List<Boolean> continuedSchedule = new ArrayList<Boolean>();
+    protected List<Boolean> closedDays = new ArrayList<Boolean>();
     protected String marketId;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regmarket);
+
+        for(int x = 0; x <7 ; x++){
+            closedDays.add(false);
+            continuedSchedule.add(false);
+            for(int y = 0; y < 4; y++){
+                businessHour.add("0");
+            }
+        }
 
         spnChain = findViewById(R.id.spChain);
         edtRegMarketName = findViewById(R.id.edtMarketName);
@@ -70,16 +81,12 @@ public class RegisterMarket extends AppCompatActivity {
 
         registerMarketHelper = new RegisterMarketHelper();
         btnRegMarketToRegAdmin = findViewById(R.id.btnRegMarketToRegAdmin);
-        registerMarketHelper.LoadChain(chainMap,chainList);
 
-        adptChain = new ArrayAdapter<String>(getApplicationContext(), R.layout.first_custom_spinner,chainList);
-        adptChain.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnChain.setAdapter(adptChain);
-
+        registerMarketHelper.LoadChain(chainMap,chainList,spnChain,getApplicationContext());
 
         lstDaysOfWeek = findViewById(R.id.lstRegMrktDayWeek);
         lstDaysOfWeek.setExpanded(true);
-        stringList.add(getResources().getString(R.string.strLun));
+        stringList.add("LUNEDI");
         stringList.add(getResources().getString(R.string.strMar));
         stringList.add(getResources().getString(R.string.strMer));
         stringList.add(getResources().getString(R.string.strGio));
@@ -101,7 +108,7 @@ public class RegisterMarket extends AppCompatActivity {
                     convertView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_list_dayweekmrkt,parent,false);
                 }
 
-
+                final TextView tvDayName = convertView.findViewById(R.id.tvItemNameDay);
                 final CheckBox chbDayContinued = convertView.findViewById(R.id.chItemDayContinued);
                 final CheckBox chbDayClosed = convertView.findViewById(R.id.chItemDayClosed);
                 final EditText edtDayOpenMorn = convertView.findViewById(R.id.edtItemDayOpenMorn);
@@ -112,19 +119,24 @@ public class RegisterMarket extends AppCompatActivity {
                 final LinearLayout layDayAfter = convertView.findViewById(R.id.layItemDayAfter);
 
 
+                tvDayName.setText(stringList.get(position));
 
                 chbDayContinued.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(!chbDayContinued.isChecked()){
                             layDayAfter.setVisibility(View.VISIBLE);
-                            continuedSchedule[position] = false;
+                            continuedSchedule.set(position,false);
                         }else{
                             layDayMorn.setVisibility(View.VISIBLE);
                             layDayAfter.setVisibility(View.GONE);
+                            edtDayOpenAfter.setText(null);
+                            edtDayCloseAfter.setText(null);
+                            businessHour.set((position*4)+2,"0");
+                            businessHour.set((position*4)+3,"0");
                             chbDayClosed.setChecked(false);
-                            closedDays[position] = false;
-                            continuedSchedule[position] = true;
+                            closedDays.set(position,false);
+                            continuedSchedule.set(position,true);
                         }
                     }
                 });
@@ -135,13 +147,21 @@ public class RegisterMarket extends AppCompatActivity {
                         if(!chbDayClosed.isChecked()){
                             layDayMorn.setVisibility(View.VISIBLE);
                             layDayAfter.setVisibility(View.VISIBLE);
-                            closedDays[position] = false;
-                            continuedSchedule[position] = false;
+                            closedDays.set(position,false);
+                            continuedSchedule.set(position,false);
                         }else{
                             layDayMorn.setVisibility(View.GONE);
+                            edtDayOpenMorn.setText(null);
+                            edtDayCloseMorn.setText(null);
+                            businessHour.set((position*4),"0");
+                            businessHour.set((position*4)+1,"0");
                             layDayAfter.setVisibility(View.GONE);
+                            edtDayOpenAfter.setText(null);
+                            edtDayCloseAfter.setText(null);
+                            businessHour.set((position*4)+2,"0");
+                            businessHour.set((position*4)+3,"0");
                             chbDayContinued.setChecked(false);
-                            closedDays[position] = true;
+                            closedDays.set(position,true);
                         }
                     }
                 });
@@ -259,7 +279,7 @@ public class RegisterMarket extends AppCompatActivity {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            businessHour[position][0] = edtDayOpenMorn.getText().toString();
+                            businessHour.set((position*4),edtDayOpenMorn.getText().toString());
                             if(!edtDayCloseMorn.getText().toString().trim().equals("")){
                                 if(edtDayCloseMorn.getText().toString().trim().compareTo(edtDayOpenMorn.getText().toString().trim()) < 0){
                                     edtDayOpenMorn.setError("");
@@ -276,7 +296,7 @@ public class RegisterMarket extends AppCompatActivity {
 
                         @Override
                         public void afterTextChanged(Editable s) {
-                            businessHour[position][1] = edtDayCloseMorn.getText().toString();
+                            businessHour.set((position*4)+1,edtDayCloseMorn.getText().toString());
                             if(!edtDayOpenMorn.getText().toString().trim().equals("")){
                                 if(edtDayCloseMorn.getText().toString().trim().compareTo(edtDayOpenMorn.getText().toString().trim()) < 0){
                                     edtDayCloseMorn.setError("");
@@ -294,9 +314,14 @@ public class RegisterMarket extends AppCompatActivity {
 
                             @Override
                             public void afterTextChanged(Editable s) {
-                                businessHour[position][2] = edtDayOpenAfter.getText().toString();
+                                businessHour.set((position*4)+2,edtDayOpenAfter.getText().toString());
                                 if(!edtDayCloseAfter.getText().toString().trim().equals("")){
                                     if(edtDayCloseAfter.getText().toString().trim().compareTo(edtDayOpenAfter.getText().toString().trim()) < 0){
+                                        edtDayOpenAfter.setError("");
+                                    }
+                                }
+                                if(!edtDayCloseMorn.getText().toString().trim().equals("")){
+                                    if(edtDayOpenAfter.getText().toString().trim().compareTo(edtDayCloseMorn.getText().toString().trim()) < 0){
                                         edtDayOpenAfter.setError("");
                                     }
                                 }
@@ -311,7 +336,7 @@ public class RegisterMarket extends AppCompatActivity {
 
                             @Override
                             public void afterTextChanged(Editable s) {
-                                businessHour[position][3] = edtDayCloseAfter.getText().toString();
+                                businessHour.set((position*4)+3,edtDayCloseAfter.getText().toString());
                                 if(!edtDayOpenAfter.getText().toString().trim().equals("")){
                                     if(edtDayCloseAfter.getText().toString().trim().compareTo(edtDayOpenAfter.getText().toString().trim()) < 0){
                                         edtDayCloseAfter.setError("");
@@ -345,11 +370,11 @@ public class RegisterMarket extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         btnRegMarketToRegAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                marketId = registerMarketHelper.RegisterMarket(spnChain,edtRegMarketName,edtRegMarketCity,edtRegMarketAddress,edtRegMarketCAP,edtRegMarketPhone,edtRegMarketEmail,businessHour,continuedSchedule,closedDays,getApplicationContext(),chainMap);
+                marketId = registerMarketHelper.RegisterMarket(spnChain,edtRegMarketName,edtRegMarketCity,edtRegMarketAddress,edtRegMarketCAP,
+                        edtRegMarketPhone,edtRegMarketEmail,businessHour,continuedSchedule,closedDays,getApplicationContext(),chainMap,getWindow());
                 if(!marketId.equals("")){gotoregemployee();}
             }
         });

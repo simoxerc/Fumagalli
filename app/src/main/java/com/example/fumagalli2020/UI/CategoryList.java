@@ -9,9 +9,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fumagalli2020.AdapterEmployeeList;
-import com.example.fumagalli2020.Class.Employee;
-import com.example.fumagalli2020.Helper.EmployeeListHelper;
+import com.example.fumagalli2020.AdapterCategoryList;
+import com.example.fumagalli2020.Class.Category;
+import com.example.fumagalli2020.Helper.CategoryListHelper;
 import com.example.fumagalli2020.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,34 +23,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EmployeeList extends AppCompatActivity {
-
+public class CategoryList extends AppCompatActivity {
+    protected Button btnAddCategory;
     protected ListView listView;
-    protected DatabaseReference databaseReference;
-    protected List<Employee> lstEmployee;
-    protected EmployeeListHelper employeeListHelper;
+    protected List<Category> lstCategory;
     protected String currentMarketId;
-    protected Button btnAddEmployee;
-    protected AdapterEmployeeList adapterEmployeeList;
+    protected AdapterCategoryList adapterCategoryList;
+    protected CategoryListHelper categoryListHelper;
+    protected DatabaseReference databaseReference;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employees_list);
-
-        btnAddEmployee = findViewById(R.id.btnLstEmpAddEmployee);
-
-        lstEmployee = new LinkedList<Employee>();
-
-        employeeListHelper = new EmployeeListHelper();
+        setContentView(R.layout.activity_category_list);
+        btnAddCategory = findViewById(R.id.btnLstAddCategory);
+        lstCategory = new LinkedList<Category>();
+        categoryListHelper = new CategoryListHelper();
         String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser).child("marketId");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentMarketId = dataSnapshot.getValue(String.class);
-                employeeListHelper.loadEmployee(lstEmployee, currentMarketId, adapterEmployeeList);
+                categoryListHelper.LoadCategory(lstCategory,currentMarketId,adapterCategoryList);
             }
 
             @Override
@@ -60,30 +56,25 @@ public class EmployeeList extends AppCompatActivity {
         });
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
+        listView = findViewById(R.id.categoryList);
+        adapterCategoryList = new AdapterCategoryList(this, R.layout.item_list_category, lstCategory);
+        listView.setAdapter(adapterCategoryList);
 
-        listView = (ListView) findViewById(R.id.employeeList);
-
-        adapterEmployeeList = new AdapterEmployeeList(this, R.layout.item_list_employee, lstEmployee);
-        listView.setAdapter(adapterEmployeeList);
-
-        btnAddEmployee.setOnClickListener(new View.OnClickListener() {
+        btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoregemployee();
+                gotoregcategory();
             }
         });
-
     }
 
-    private void gotoregemployee(){
+    private void gotoregcategory(){
         Bundle bundle = new Bundle();
         bundle.putString("marketId",currentMarketId);
-        bundle.putInt("source",1);
-        Intent intent = new Intent(this,RegisterEmployee.class);
+        Intent intent = new Intent(this,RegisterCategory.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

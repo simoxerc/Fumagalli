@@ -1,5 +1,7 @@
 package com.example.fumagalli2020.Class;
 
+import java.util.List;
+
 public class Market {
 
     private String name;
@@ -8,11 +10,11 @@ public class Market {
     private String email;
     private String marketId;
     private String chain_Id;
-    private String[][] businessHour;
-    private boolean[] continuedSchedule;
-    private boolean[] closedDays;
+    private List<String> businessHour;
+    private List<Boolean> continuedSchedule;
+    private List<Boolean> closedDays;
 
-    public Market(String name, String address, String number, String email, String marketId, String chain_Id, String[][] businessHour, boolean[] continuedSchedule, boolean[] closedDays) {
+    public Market(String name, String address, String number, String email, String marketId, String chain_Id, List<String> businessHour, List<Boolean> continuedSchedule, List<Boolean> closedDays) {
         this.name = name;
         this.address = address;
         this.number = number;
@@ -72,27 +74,27 @@ public class Market {
         this.email = email;
     }
 
-    public String[][] getBusinessHour() {
+    public List<String> getBusinessHour() {
         return businessHour;
     }
 
-    public void setBusinessHour(String[][] businessHour) {
+    public void setBusinessHour(List<String> businessHour) {
         this.businessHour = businessHour;
     }
 
-    public boolean[] getContinuedSchedule() {
+    public List<Boolean> getContinuedSchedule() {
         return continuedSchedule;
     }
 
-    public void setContinuedSchedule(boolean[] continuedSchedule) {
+    public void setContinuedSchedule(List<Boolean> continuedSchedule) {
         this.continuedSchedule = continuedSchedule;
     }
 
-    public boolean[] getClosedDays() {
+    public List<Boolean> getClosedDays() {
         return closedDays;
     }
 
-    public void setClosedDays(boolean[] closedDays) {
+    public void setClosedDays(List<Boolean> closedDays) {
         this.closedDays = closedDays;
     }
 }

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="start"
+    android:gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/edtRegProductName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:hint="Nome Prodotto" />
+
+        <Spinner
+            android:id="@+id/spnRegProductType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"/>
+
+        <EditText
+            android:id="@+id/edtRegProductOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:hint="Origine Prodotto" />
+
+        <EditText
+            android:id="@+id/edtRegProductQuantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:inputType="number"
+            android:hint="Quantità Prodotto" />
+
+
+        <EditText
+            android:id="@+id/edtRegProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:hint="Prezzo Prodotto" />
+
+
+        <EditText
+            android:id="@+id/edtRegProductPackageDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:focusable="false"
+            android:inputType="text"
+            android:hint="Data Confezionamento" />
+
+
+        <EditText
+            android:id="@+id/edtRegProductExpireDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="20dp"
+            android:focusable="false"
+            android:maxLines="1"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:hint="Data Scadenza" />
+
+        <Button
+            android:id="@+id/btnRegProductRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="16sp"
+            android:text="@string/strConfirm"
+            tools:targetApi="jelly_bean" />
+
+    </LinearLayout>
+
+</ScrollView>

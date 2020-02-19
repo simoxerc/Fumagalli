@@ -9,9 +9,10 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fumagalli2020.AdapterEmployeeList;
-import com.example.fumagalli2020.Class.Employee;
-import com.example.fumagalli2020.Helper.EmployeeListHelper;
+import com.example.fumagalli2020.AdapterCategoryList;
+import com.example.fumagalli2020.AdapterProductList;
+import com.example.fumagalli2020.Class.Product;
+import com.example.fumagalli2020.Helper.ProductListHelper;
 import com.example.fumagalli2020.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,67 +24,62 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EmployeeList extends AppCompatActivity {
-
+public class ProductList extends AppCompatActivity {
+    protected Button btnAddProduct;
     protected ListView listView;
-    protected DatabaseReference databaseReference;
-    protected List<Employee> lstEmployee;
-    protected EmployeeListHelper employeeListHelper;
+    protected List<Product> lstProduct;
+    protected String currentCategoryId;
     protected String currentMarketId;
-    protected Button btnAddEmployee;
-    protected AdapterEmployeeList adapterEmployeeList;
-
+    protected AdapterProductList adapterProductList;
+    protected ProductListHelper productListHelper;
+    protected DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_employees_list);
+        setContentView(R.layout.activity_product_list);
 
-        btnAddEmployee = findViewById(R.id.btnLstEmpAddEmployee);
-
-        lstEmployee = new LinkedList<Employee>();
-
-        employeeListHelper = new EmployeeListHelper();
+        btnAddProduct = findViewById(R.id.btnLstAddProduct);
+        lstProduct = new LinkedList<Product>();
+        productListHelper = new ProductListHelper();
+        Bundle bundle = getIntent().getExtras();
+        currentCategoryId = bundle.getString("categoryId");
+        currentMarketId = bundle.getString("marketId");
         String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser).child("marketId");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentMarketId = dataSnapshot.getValue(String.class);
-                employeeListHelper.loadEmployee(lstEmployee, currentMarketId, adapterEmployeeList);
+                productListHelper.LoadProduct(lstProduct,currentMarketId,currentCategoryId,adapterProductList);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        listView = (ListView) findViewById(R.id.employeeList);
-
-        adapterEmployeeList = new AdapterEmployeeList(this, R.layout.item_list_employee, lstEmployee);
-        listView.setAdapter(adapterEmployeeList);
-
-        btnAddEmployee.setOnClickListener(new View.OnClickListener() {
+        listView = findViewById(R.id.productList);
+        adapterProductList = new AdapterProductList(this, R.layout.item_list_category, lstProduct);
+        listView.setAdapter(adapterProductList);
+        btnAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoregemployee();
+                gotoregproduct();
             }
         });
-
     }
 
-    private void gotoregemployee(){
+    private void gotoregproduct(){
+        Intent intent = new Intent(this,RegisterProduct.class);
         Bundle bundle = new Bundle();
         bundle.putString("marketId",currentMarketId);
-        bundle.putInt("source",1);
-        Intent intent = new Intent(this,RegisterEmployee.class);
+        bundle.putString("categoryId",currentCategoryId);
         intent.putExtras(bundle);
         startActivity(intent);
     }

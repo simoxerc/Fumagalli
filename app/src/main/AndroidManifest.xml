@@ -82,6 +82,37 @@
             android:screenOrientation="portrait">
         </activity>
 
+        <activity
+            android:name=".UI.CategoryList"
+            android:label="Categorie"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.RegisterCategory"
+            android:label="Registra Categoria"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CategoryList">
+            </meta-data>
+        </activity>
+
+        <activity
+            android:name=".UI.RegisterProduct"
+            android:label="Registra Prodotto"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.ProductList"
+            android:label="Prodotti"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CategoryList">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>
