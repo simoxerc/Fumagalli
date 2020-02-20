@@ -1,9 +1,12 @@
 package com.example.fumagalli2020.Helper;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.fumagalli2020.AdapterProductList;
 import com.example.fumagalli2020.Class.Product;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,7 +22,7 @@ public class ProductListHelper {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds: dataSnapshot.getChildren()){
-                    lstProduct.add(new Product(ds.child("name").getValue(String.class),ds.child("productId").getValue(String.class),currentCategoryId,
+                    lstProduct.add(new Product(ds.child("name").getValue(String.class),ds.child("productId").getValue(String.class),currentCategoryId, currentMarketId,
                             ds.child("packagingDate").getValue(String.class),ds.child("expireDate").getValue(String.class),ds.child("origin").getValue(String.class),ds.child("type").getValue(String.class),
                             ds.child("quantity").getValue(String.class),ds.child("price").getValue(String.class)));
                 }
@@ -33,5 +36,6 @@ public class ProductListHelper {
         };
         databasereference.addListenerForSingleValueEvent(valueEventListener);
     }
+
 
 }

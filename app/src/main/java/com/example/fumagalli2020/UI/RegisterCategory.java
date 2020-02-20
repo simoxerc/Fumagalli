@@ -53,7 +53,7 @@ public class RegisterCategory extends AppCompatActivity {
         btnRegCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              registerCategoryHelper.registerCategory(edtCategoryName,edtCategoryDesc,marketId,RegisterCategory.this, listener);
+              registerCategoryHelper.registerCategory(edtCategoryName,edtCategoryDesc,marketId, listener);
             }
         });
     }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ItemCtgContainerInfoCtg"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@id/imgItemCategoryArrow"
+        android:layout_toStartOf="@id/imgItemCategoryArrow"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/tvItemCategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="18sp"
+            tools:targetApi="jelly_bean"/>
+
+        <TextView
+            android:id="@+id/tvItemCategoryDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="14sp"
+            tools:targetApi="jelly_bean"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgItemCategoryArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:paddingRight="10dp"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+        android:paddingEnd="10dp" />
+
+</RelativeLayout>

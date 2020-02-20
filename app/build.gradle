@@ -32,4 +32,5 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.2.0'
     implementation 'androidx.navigation:navigation-ui:2.2.0'
     implementation 'com.android.support:design:29.0.2' //external added
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

@@ -4,23 +4,33 @@ public class Product {
     private String name;
     private String productId;
     private String categoryId;
+    private String marketId;
     private String packagingDate;
     private String expireDate;
     private String origin;
     private String type;
     private String quantity;
     private String price;
+    private String qntSelected;
 
-    public Product(String name, String productId, String categoryId, String packagingDate, String expireDate, String origin, String type, String quantity, String price) {
+    public Product(String name, String productId, String categoryId, String marketId, String packagingDate, String expireDate, String origin, String type, String quantity, String price) {
         this.name = name;
         this.productId = productId;
         this.categoryId = categoryId;
+        this.marketId = marketId;
         this.packagingDate = packagingDate;
         this.expireDate = expireDate;
         this.origin = origin;
         this.type = type;
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public Product(String name, String productId, String price, String qntSelected){
+        this.name = name;
+        this.productId = productId;
+        this.price = price;
+        this.qntSelected = qntSelected;
     }
 
     public String getName() {
@@ -45,6 +55,14 @@ public class Product {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public String getMarketId() {
+        return marketId;
+    }
+
+    public void setMarketId(String marketId) {
+        this.marketId = marketId;
     }
 
     public String getPackagingDate() {
@@ -93,5 +111,13 @@ public class Product {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getQntSelected() {
+        return qntSelected;
+    }
+
+    public void setQntSelected(String qntSelected) {
+        this.qntSelected = qntSelected;
     }
 }

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -113,6 +114,43 @@
                 android:value=".UI.CategoryList">
             </meta-data>
         </activity>
+        <activity
+            android:name=".UI.CustChainList"
+            android:label="Catene Supermercati"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".UI.CustMarketList"
+            android:label="Lista Supermercati"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustChainList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.CustCategoryList"
+            android:label="Lista Categorie"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustMarketList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.CustProductList"
+            android:label="Lista Prodotti"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustCategoryList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.CustCartList"
+            android:label="Carrelli"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

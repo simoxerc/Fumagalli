@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,10 +27,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fumagalli2020.ExpandableHeightListView;
 import com.example.fumagalli2020.Helper.RegisterMarketHelper;
 import com.example.fumagalli2020.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
-import org.w3c.dom.Text;
-
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,11 +51,11 @@ public class RegisterMarket extends AppCompatActivity {
     protected ArrayAdapter adptDaysOfWeek;
     protected ArrayAdapter adptChain;
     protected List<String> stringList = new ArrayList<String>();
-//    protected String[][] businessHour = new String[7][4];
     protected List<String> businessHour = new ArrayList<String>();
     protected List<Boolean> continuedSchedule = new ArrayList<Boolean>();
     protected List<Boolean> closedDays = new ArrayList<Boolean>();
     protected String marketId;
+    protected OnCompleteListener<Void> onCompleteListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -365,6 +364,18 @@ public class RegisterMarket extends AppCompatActivity {
             }
         });
 
+        onCompleteListener = new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(RegisterMarket.this,"Registrato",Toast.LENGTH_LONG).show();
+                    gotoregemployee();
+                }else{
+                    Toast.makeText(RegisterMarket.this,"Registrazione Fallita",Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+
     }
 
     @Override
@@ -373,9 +384,8 @@ public class RegisterMarket extends AppCompatActivity {
         btnRegMarketToRegAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                marketId = registerMarketHelper.RegisterMarket(spnChain,edtRegMarketName,edtRegMarketCity,edtRegMarketAddress,edtRegMarketCAP,
-                        edtRegMarketPhone,edtRegMarketEmail,businessHour,continuedSchedule,closedDays,getApplicationContext(),chainMap,getWindow());
-                if(!marketId.equals("")){gotoregemployee();}
+                registerMarketHelper.RegisterMarket(spnChain,edtRegMarketName,edtRegMarketCity,edtRegMarketAddress,edtRegMarketCAP,
+                        edtRegMarketPhone,edtRegMarketEmail,businessHour,continuedSchedule,closedDays,getApplicationContext(),chainMap,onCompleteListener);
             }
         });
     }

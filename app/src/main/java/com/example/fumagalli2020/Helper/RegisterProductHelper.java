@@ -20,7 +20,7 @@ public class RegisterProductHelper {
         type = spnProductType.getSelectedItem().toString();
         productid = categoryId+name;
         if(checkfield(edtProductName,edtProductOrigin,edtProductQuantity,edtProductPrice,edtProductPackageDate,edtProductExpireDate)){
-            final Product product = new Product(name,productid,categoryId,pckgDate,expDate,origin,type,quantity,price);
+            final Product product = new Product(name,productid,categoryId, marketId, pckgDate,expDate,origin,type,quantity,price);
             final DatabaseReference mDBRef = FirebaseDatabase.getInstance().getReference();
             mDBRef.child("Market").child(marketId).child("Category").child(categoryId).child("Product").child(productid).setValue(product).addOnCompleteListener(onCompleteListener);
         }

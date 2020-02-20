@@ -55,9 +55,9 @@ public class RegisterMarketHelper {
         mDBRef.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    public String RegisterMarket(Spinner chain, final EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,
+    public void RegisterMarket(Spinner chain, final EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,
                                  EditText edtMarketCAP, EditText edtMarketPhone, EditText edtMarketEmail, List<String> businessHour, List<Boolean> continuedSchedule, List<Boolean> closedDays,
-                                 final Context context, Map chainMap, final Window window){
+                                 final Context context, Map chainMap, OnCompleteListener<Void> onCompleteListener){
         String marketid = "";
         if(checkfield(chain,edtMarketName,edtMarketCity,edtMarketAddress,edtMarketCAP,edtMarketPhone,edtMarketEmail,businessHour, continuedSchedule, closedDays,context)){
             String name = edtMarketName.getText().toString();
@@ -68,19 +68,9 @@ public class RegisterMarketHelper {
             marketid = indexchain + edtMarketCAP.getText().toString()+edtMarketPhone.getText().toString();
             final Market market = new Market(name,address,phone,email, marketid, indexchain,businessHour,continuedSchedule,closedDays);
             mDBRef = FirebaseDatabase.getInstance().getReference().child("Market").child(marketid);
-            mDBRef.setValue(market).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(context,"Negozio inserito",Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(context,"Problema in inserimento al database",Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+            mDBRef.setValue(market).addOnCompleteListener(onCompleteListener);
         }
 
-        return "";
     }
 
     private boolean checkfield(Spinner chain, EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,

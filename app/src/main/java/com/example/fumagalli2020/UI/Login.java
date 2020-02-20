@@ -95,6 +95,8 @@ public class Login extends AppCompatActivity {
                                             intent = new Intent(Login.this,EmployeeList.class);
                                         else if(tipo.equals("2"))
                                             intent = new Intent(Login.this,CategoryList.class);
+                                        else if(tipo.equals("3"))
+                                            intent = new Intent(Login.this,CustChainList.class);
                                         else
                                             intent = new Intent(Login.this,Login.class);
                                         gotonewui(intent);

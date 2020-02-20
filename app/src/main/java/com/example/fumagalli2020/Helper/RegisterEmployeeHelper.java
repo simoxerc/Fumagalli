@@ -25,7 +25,8 @@ public class RegisterEmployeeHelper {
     private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
     private final Pattern patternEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
-    public boolean registerEmployee(final EditText edtName, EditText edtSurname, EditText edtMobile, Spinner spnType, final EditText edtEmail, TextInputLayout tilPassword, String marketId, final Context context) {
+    public void registerEmployee(final EditText edtName, EditText edtSurname, EditText edtMobile, Spinner spnType, final EditText edtEmail,
+                                 TextInputLayout tilPassword, String marketId, final Context context, final OnCompleteListener<Void> onCompleteListener) {
         String name,surname,mobile,email,pwd, type;
         final FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
@@ -63,26 +64,13 @@ public class RegisterEmployeeHelper {
                             if(task.isSuccessful()){
                                 final DatabaseReference mDBRef = FirebaseDatabase.getInstance().getReference();
                                 mDBRef.child("Users").child(finalFirebaseAuth.getCurrentUser().getUid())
-                                        .setValue(employee).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> taskb) {
-                                        if(!taskb.isSuccessful()){
-                                            finalFirebaseAuth.getCurrentUser().delete();
-                                            Toast.makeText(context,"Registrazione fallita", Toast.LENGTH_LONG).show();
-                                        }else{
-                                            finalFirebaseAuth.signOut();
-                                            edtName.setText("Registrato");
-                                        }
-                                    }
-                                });
+                                        .setValue(employee).addOnCompleteListener(onCompleteListener);
                             }else{
                                 edtEmail.setError("Email in uso");
                             }
                         }
                     });
-
         }
-        return edtName.getText().toString().equals("Registrato");
     }
 
     private boolean checkfield(EditText edtName, EditText edtSurname, EditText edtMobile, EditText edtEmail, TextInputLayout tilPassword){
@@ -117,4 +105,6 @@ public class RegisterEmployeeHelper {
 
         return registrable;
     }
+
+
 }

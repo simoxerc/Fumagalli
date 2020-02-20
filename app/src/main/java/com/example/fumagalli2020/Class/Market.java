@@ -26,6 +26,15 @@ public class Market {
         this.closedDays = closedDays;
     }
 
+    public Market(String name,String address,String number,String email,String marketId,String chain_Id){
+        this.name = name;
+        this.address = address;
+        this.number = number;
+        this.email = email;
+        this.marketId = marketId;
+        this.chain_Id = chain_Id;
+    }
+
     public String getChain_Id() {
         return chain_Id;
     }

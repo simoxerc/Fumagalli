@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.fumagalli2020.Class.Category;
 import com.example.fumagalli2020.Helper.LoginHelper;
 import com.example.fumagalli2020.UI.CategoryList;
+import com.example.fumagalli2020.UI.CustChainList;
 import com.example.fumagalli2020.UI.EmployeeList;
 import com.example.fumagalli2020.UI.Login;
 import com.example.fumagalli2020.UI.RegisterMarket;
@@ -49,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                                 intent = new Intent(MainActivity.this,EmployeeList.class);
                             else if(tipo.equals("2"))
                                 intent = new Intent(MainActivity.this, CategoryList.class);
+                            else if(tipo.equals("3"))
+                                intent = new Intent(MainActivity.this, CustChainList.class);
                             else
                                 intent = new Intent(MainActivity.this,Login.class);
                             gotonewui(intent);

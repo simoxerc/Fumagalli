@@ -12,12 +12,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fumagalli2020.Helper.RegisterEmployeeHelper;
 import com.example.fumagalli2020.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +42,8 @@ public class RegisterEmployee extends AppCompatActivity {
    private List<String> typeList = new ArrayList();
    private String marketId;
    private Integer source;
+   protected FirebaseAuth firebaseAuth;
+   protected OnCompleteListener<Void> onCompleteListener;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,6 +85,27 @@ public class RegisterEmployee extends AppCompatActivity {
             }
         });
 
+        createnewfirebaseauth();
+
+        final FirebaseAuth finalFirebaseAuth = firebaseAuth;
+
+        onCompleteListener = new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(!task.isSuccessful()){
+                    finalFirebaseAuth.getCurrentUser().delete();
+                    Toast.makeText(getApplicationContext(),"Registrazione fallita", Toast.LENGTH_LONG).show();
+                }else{
+                    finalFirebaseAuth.signOut();
+                    Toast.makeText(getApplicationContext(),"Registrazione Riuscita", Toast.LENGTH_LONG).show();
+                    if(source == 1)
+                        gotoemployeelist();
+                    else
+                        gotoregmarket();
+                }
+            }
+        };
+
     }
 
     @Override
@@ -85,16 +114,18 @@ public class RegisterEmployee extends AppCompatActivity {
         regEmplButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean ret = helper.registerEmployee(regEmplName, regEmplSurname, regEmplMobile, regEmplSpinner, regEmplEmail, tilEmplPassword,marketId,getApplicationContext());
-                if(ret){
-                    Toast.makeText(RegisterEmployee.this, "OK", Toast.LENGTH_LONG).show();
-                    gotoemployeelist();
-                }
+                helper.registerEmployee(regEmplName, regEmplSurname, regEmplMobile, regEmplSpinner, regEmplEmail, tilEmplPassword,marketId,getApplicationContext(),onCompleteListener);
             }
-            });
+        });
     }
+
     private void gotoemployeelist() {
         Intent intent = new Intent(this, EmployeeList.class);
+        startActivity(intent);
+    }
+
+    private void gotoregmarket(){
+        Intent intent = new Intent(this,RegisterMarket.class);
         startActivity(intent);
     }
 
@@ -113,6 +144,19 @@ public class RegisterEmployee extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         super.onBackPressed();
+    }
+
+    private void createnewfirebaseauth(){
+        FirebaseOptions firebaseOptions = new FirebaseOptions.Builder()
+                .setDatabaseUrl("https://fumagalliids.firebaseio.com/")
+                .setApiKey("AIzaSyBUkFYt7GTUpBsVSMQKv6FXOsuzcwgN6_g")
+                .setApplicationId("fumagalliids").build();
+
+        try { FirebaseApp myApp = FirebaseApp.initializeApp(getApplicationContext(), firebaseOptions, "AnyAppName");
+            firebaseAuth = FirebaseAuth.getInstance(myApp);
+        } catch (IllegalStateException e){
+            firebaseAuth = FirebaseAuth.getInstance(FirebaseApp.getInstance("AnyAppName"));
+        }
     }
 
 
