@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatImageButton;
 
 import com.example.fumagalli2020.Class.Cart;
+import com.example.fumagalli2020.UI.CustCartSingle;
 import com.example.fumagalli2020.UI.CustCategoryList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -49,6 +51,7 @@ public class AdapterCustCartList extends ArrayAdapter<Cart> {
         final TextView tvItemCartMkPhone = convertView.findViewById(R.id.tvItemCartMkPhone);
         final TextView tvItemCartPrice = convertView.findViewById(R.id.tvItemCartPrice);
         final AppCompatImageButton btnItemDeleteCart = convertView.findViewById(R.id.btnItemDeleteCart);
+        final ImageButton btnViewCart = convertView.findViewById(R.id.btnItemViewCart);
 
         final Cart cart = getItem(position);
 
@@ -80,6 +83,18 @@ public class AdapterCustCartList extends ArrayAdapter<Cart> {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        btnViewCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(parent.getContext(), CustCartSingle.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("marketId",cart.getMarketId());
+                bundle.putString("cartId",cart.getCartId());
+                intent.putExtras(bundle);
+                parent.getContext().startActivity(intent);
             }
         });
 

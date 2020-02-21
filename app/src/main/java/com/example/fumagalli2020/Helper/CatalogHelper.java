@@ -147,4 +147,56 @@ public class CatalogHelper {
 
     }
 
+    public void intcheckdbquantity(final String cartId, final Product product, final String prdType, final String marketId, final String currentUser, final Context context, final EditText edtQtySelected, final int qnt){
+        final String categoryId = product.getProductId().substring(0,product.getProductId().length() - product.getName().length());
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        final ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("Users").child(currentUser).child("Carts").child(cartId).hasChild(product.getProductId())) {
+                    if (qnt + Integer.parseInt(dataSnapshot.child("Users").child(currentUser).child("Carts").child(cartId).child("Products").child(product.getProductId()).getValue(String.class)) >
+                            Integer.parseInt(dataSnapshot.child("Market").child(marketId).child("Category").child(categoryId).child("Product").child(product.getProductId()).getValue(String.class))) {
+                        Toast.makeText(context, "Quantità non disponibile", Toast.LENGTH_LONG).show();
+                    } else {
+                        AddProductCart(cartId,product,prdType,marketId,currentUser,context,edtQtySelected);
+                    }
+                }else{
+                    AddProductCart(cartId,product,prdType,marketId,currentUser,context,edtQtySelected);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        databaseReference.addListenerForSingleValueEvent(valueEventListener);
+    }
+
+    public void floatcheckdbquantity(final String cartId, final Product product, final String prdType, final String marketId, final String currentUser, final Context context, final EditText edtQtySelected, final float qnt){
+        final String categoryId = product.getProductId().substring(0,product.getProductId().length() - product.getName().length());
+        final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        final ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("Users").child(currentUser).child("Carts").child(cartId).hasChild(product.getProductId())) {
+                    if (qnt + Float.parseFloat(dataSnapshot.child("Users").child(currentUser).child("Carts").child(cartId).child("Products").child(product.getProductId()).getValue(String.class)) >
+                            Float.parseFloat(dataSnapshot.child("Market").child(marketId).child("Category").child(categoryId).child("Product").child(product.getProductId()).getValue(String.class))) {
+                        Toast.makeText(context, "Quantità non disponibile", Toast.LENGTH_LONG).show();
+                    } else {
+                        AddProductCart(cartId,product,prdType,marketId,currentUser,context,edtQtySelected);
+                    }
+                }else{
+                    AddProductCart(cartId,product,prdType,marketId,currentUser,context,edtQtySelected);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        databaseReference.addListenerForSingleValueEvent(valueEventListener);
+    }
+
 }

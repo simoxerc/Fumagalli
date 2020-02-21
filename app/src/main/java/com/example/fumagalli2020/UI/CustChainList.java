@@ -55,17 +55,16 @@ public class CustChainList extends AppCompatActivity {
                     case R.id.navigation_shop:
                         break;
                     case R.id.navigation_cart:
-                        item.setChecked(true);
                         Intent a = new Intent(CustChainList.this, CustCartList.class);
                         startActivity(a);
+                        item.setChecked(true);
                         break;
                     case R.id.navigation_profile:
                         break;
                 }
                 return false;
             }
-        });
-
+        });                               
 
     }
 

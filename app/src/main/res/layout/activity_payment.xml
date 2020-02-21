@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/clWhite"
+    tools:context=".UI.Login">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/clWhite">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="start">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/mastercard"/>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:stretchColumns="0,1,2"
+                android:gravity="center">
+                <TableRow>
+                    <TextView
+                        android:text="@string/strTblDay"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="3dip" />
+                    <TextView
+                        android:text="@string/strTblTime"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="3dip" />
+                    <TextView
+                        android:text="@string/strTblTime"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strLun"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb00"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb01"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strMar"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb10"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb11"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strMer"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb20"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb21"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strGio"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb30"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb31"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strVen"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb40"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb41"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strSab"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb50"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb51"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:text="@string/strDom"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb60"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                    <TextView
+                        android:id="@+id/tb61"
+                        android:gravity="center"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:padding="3dip" />
+                </TableRow>
+
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/strOrderDate"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack"
+                tools:targetApi="jelly_bean" />
+
+            <EditText
+                android:id="@+id/edtOrderDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                android:editable="false"
+                android:clickable="true"
+                android:focusable="false"
+                android:maxLines="1"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="16sp"
+                tools:targetApi="jelly_bean" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/strOrderTime"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack"
+                tools:targetApi="jelly_bean" />
+
+            <EditText
+                android:id="@+id/edtOrderTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                android:editable="false"
+                android:clickable="true"
+                android:focusable="false"
+                android:maxLines="1"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="16sp"
+                tools:targetApi="jelly_bean" />
+
+
+            <TextView
+                android:id="@+id/tvTotalPay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack"
+                tools:targetApi="jelly_bean" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/strCard"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack"
+                tools:targetApi="jelly_bean" />
+
+            <EditText
+                android:id="@+id/edtPayCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="2dp"
+                android:background="@drawable/first_custom_edit_text"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack"
+                tools:targetApi="jelly_bean" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/strExpDate"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="16sp"
+                    tools:targetApi="jelly_bean" />
+
+                <EditText
+                    android:id="@+id/edtCardExpMonth"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/first_custom_edit_text"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:maxLength="2"
+                    android:padding="2dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="14sp"
+                    tools:targetApi="jelly_bean" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/strExpSep"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="16sp"
+                    tools:targetApi="jelly_bean" />
+
+
+                <EditText
+                    android:id="@+id/edtCardExpYear"
+                    android:layout_width="42dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/first_custom_edit_text"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:maxLength="2"
+                    android:padding="2dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="14sp"
+                    tools:targetApi="jelly_bean" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:text="@string/strCVV"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="16sp"
+                    tools:targetApi="jelly_bean" />
+
+                <EditText
+                    android:id="@+id/edtCardVV"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/first_custom_edit_text"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:maxLength="3"
+                    android:padding="2dp"
+                    android:textColor="@color/clBlack"
+                    android:textSize="14sp"
+                    tools:targetApi="jelly_bean" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnPay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="80dp"
+                android:layout_marginLeft="80dp"
+                android:text="@string/strPay"
+                android:paddingVertical="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="16sp"
+                android:textColor="@color/clBlack"
+                tools:targetApi="o"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

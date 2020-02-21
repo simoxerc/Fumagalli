@@ -70,5 +70,18 @@
     <string name="strAdd">Aggiungi</string>
     <string name="strTimeTable">ORARIO</string>
     <string name="strHyphen">-</string>
-    <string name="strCategoryDesc">Descrizione</string>
+    <string name="strBuy">Acquista</string>
+    <string name="strCategoryDesc">Descrizione Categoria</string>
+    <string name="strPay">Paga &amp; Genera Ordina</string>
+    <string name="strCVV">CVV</string>
+    <string name="strCard">Numero Carta</string>
+    <string name="strTblDay">GIORNO</string>
+    <string name="strTblTime">ORARI</string>
+    <string name="strOrderDate">Data Ritiro</string>
+    <string name="strOrderTime">Orario Ritiro</string>
+    <string name="strExpDate">Scad.</string>
+    <string name="strExpSep">/</string>
+    <string name="strEuro">€</string>
+    <string name="strZeroEuro">0.0</string>
+    <string name="strNext">Prosegui</string>
 </resources>

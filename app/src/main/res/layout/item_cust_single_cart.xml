@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/ItemSingleCartContainerInfoPrd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvItemSingleCartName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="14sp"
+            android:layout_marginEnd="20dp"/>
+
+        <TextView
+            android:id="@+id/tvItemSingleCartPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="14sp"
+            android:layout_marginStart="20dp"/>
+
+        <TextView
+            android:id="@+id/tvItemSingleCartAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
+            android:textSize="14sp"
+            android:layout_marginStart="20dp"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ItemSingleCartContainerQnt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ItemSingleCartContainerQntSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="14sp"
+                android:text="@string/strQuantitySelected"
+                tools:targetApi="jelly_bean" />
+
+            <TextView
+                android:id="@+id/tvItemSingleCartQntSelected"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="14sp"
+                tools:targetApi="jelly_bean"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ItemSingleCartContainerQntChange"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@id/imgBtnItemSingleCartChangeQtn"
+            android:layout_marginEnd="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="14sp"
+                android:text="@string/strQuantity"
+                tools:targetApi="jelly_bean" />
+
+            <EditText
+                android:id="@+id/edtItemSingleCartQntChange"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_regular"
+                android:textSize="14sp"
+                android:inputType="numberDecimal"
+                android:background="@drawable/first_custom_edit_text"
+                android:padding="5dp"
+                tools:targetApi="jelly_bean"/>
+
+        </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/imgBtnItemSingleCartChangeQtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/imgBtnItemSingleCartRemovePrd"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:background="@color/clDarkGreen"
+            android:src="@drawable/ic_check_white_24dp"/>
+
+        <ImageButton
+            android:id="@+id/imgBtnItemSingleCartRemovePrd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:layout_centerVertical="true"
+            android:background="@color/clRed"
+            android:src="@drawable/ic_remove_white_24dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

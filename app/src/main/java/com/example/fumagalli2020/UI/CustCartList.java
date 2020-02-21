@@ -24,7 +24,6 @@ public class CustCartList extends AppCompatActivity {
     protected AdapterCustCartList adapterCustCartList ;
     protected ListView listView;
     protected CustCartListHelper custCartListHelper ;
-    protected String currentCategoryId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -61,6 +60,8 @@ public class CustCartList extends AppCompatActivity {
                 return false;
             }
         });
+
+        navigation.getMenu().getItem(0).setChecked(true);
 
 
     }

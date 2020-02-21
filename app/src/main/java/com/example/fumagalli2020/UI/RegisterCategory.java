@@ -25,7 +25,7 @@ public class RegisterCategory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activty_registercategory);
+        setContentView(R.layout.activity_registercategory);
         btnRegCategory = findViewById(R.id.btnRegCategory);
         edtCategoryName = findViewById(R.id.edtCategoryName);
         edtCategoryDesc = findViewById(R.id.edtCategoryDesc);

@@ -33,6 +33,15 @@ public class Product {
         this.qntSelected = qntSelected;
     }
 
+    public Product(String productId, String name, String type, String price, String quantity, String qntSelected){
+        this.productId = productId;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.quantity = quantity;
+        this.qntSelected = qntSelected;
+    }
+
     public String getName() {
         return name;
     }

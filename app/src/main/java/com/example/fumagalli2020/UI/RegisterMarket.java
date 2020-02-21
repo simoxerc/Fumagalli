@@ -85,7 +85,7 @@ public class RegisterMarket extends AppCompatActivity {
 
         lstDaysOfWeek = findViewById(R.id.lstRegMrktDayWeek);
         lstDaysOfWeek.setExpanded(true);
-        stringList.add("LUNEDI");
+        stringList.add(getResources().getString(R.string.strLun));
         stringList.add(getResources().getString(R.string.strMar));
         stringList.add(getResources().getString(R.string.strMer));
         stringList.add(getResources().getString(R.string.strGio));

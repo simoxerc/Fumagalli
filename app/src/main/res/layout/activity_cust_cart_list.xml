@@ -14,7 +14,9 @@
         <ListView
             android:id="@+id/lstCustCart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:divider="@color/clBlack"
+            android:dividerHeight="2dp">
         </ListView>
 
 

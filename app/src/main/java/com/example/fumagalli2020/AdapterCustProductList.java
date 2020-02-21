@@ -61,13 +61,6 @@ public class AdapterCustProductList extends ArrayAdapter<Product> {
         }
         tvProductQuantity.setText(("Disp. " + product.getQuantity()));
 
-        OnCompleteListener onCompleteListener = new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-
-            }
-        };
-
         btnAddProductToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +77,9 @@ public class AdapterCustProductList extends ArrayAdapter<Product> {
                             if(qtn > Integer.valueOf(product.getQuantity())){
                                 edtQuantitySelected.setError("Quantità non disponibile");
                             }else{
-                                catalogHelper.AddProductCart(currentUser+product.getMarketId(),
+                                catalogHelper.intcheckdbquantity(currentUser+product.getMarketId(),
                                         new Product(product.getName(),product.getProductId(),product.getPrice(),edtQuantitySelected.getText().toString()),product.getType(),
-                                        product.getMarketId(),currentUser,parent.getContext(),edtQuantitySelected);
+                                        product.getMarketId(),currentUser,parent.getContext(),edtQuantitySelected,qtn);
                             }
                         }
                     }else{
@@ -94,9 +87,9 @@ public class AdapterCustProductList extends ArrayAdapter<Product> {
                         if(qtn > Float.valueOf(product.getQuantity())){
                             edtQuantitySelected.setError("Quantità non disponibile");
                         }else{
-                            catalogHelper.AddProductCart(currentUser+product.getMarketId(),
+                            catalogHelper.floatcheckdbquantity(currentUser+product.getMarketId(),
                                     new Product(product.getName(),product.getProductId(),product.getPrice(),edtQuantitySelected.getText().toString()),product.getType(),
-                                    product.getMarketId(),currentUser,parent.getContext(),edtQuantitySelected);
+                                    product.getMarketId(),currentUser,parent.getContext(),edtQuantitySelected,qtn);
                         }
                     }
                 }
@@ -105,5 +98,7 @@ public class AdapterCustProductList extends ArrayAdapter<Product> {
 
         return convertView;
     }
+
+
 
 }

@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.fumagalli2020.Class.Cart;
 import com.example.fumagalli2020.Class.Market;
 import com.example.fumagalli2020.UI.CustCategoryList;
-import com.example.fumagalli2020.UI.CustMarketList;
 
 import java.util.List;
 

@@ -141,15 +141,28 @@
             android:name=".UI.CustProductList"
             android:label="Lista Prodotti"
             android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.CustCategoryList">
-            </meta-data>
         </activity>
         <activity
             android:name=".UI.CustCartList"
             android:label="Carrelli"
             android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".UI.CustCartSingle"
+            android:label="Carrello"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustCartList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.Checkout"
+            android:label="Checkout"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustCartSingle">
+            </meta-data>
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
