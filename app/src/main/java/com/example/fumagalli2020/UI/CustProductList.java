@@ -62,6 +62,8 @@ public class CustProductList extends AppCompatActivity {
                         startActivity(a);
                         break;
                     case R.id.cust_navigation_profile:
+                        Intent b = new Intent(CustProductList.this,CustomerInfo.class);
+                        startActivity(b);
                         break;
                 }
                 return false;

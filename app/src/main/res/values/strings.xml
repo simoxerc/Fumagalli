@@ -87,5 +87,8 @@
     <string name="strLogisticMarket">Negozio</string>
     <string name="strLogisticOrders">Ordini</string>
     <string name="strX">x</string>
-
+    <string name="strModifyInfo">Modifica Dati</string>
+    <string name="strModifyHours">Modifica Orari Negozio</string>
+    <string name="strAcceptModify"> Salva modifiche</string>
+    <string name="strEmployee">Dipendenti</string>
 </resources>
