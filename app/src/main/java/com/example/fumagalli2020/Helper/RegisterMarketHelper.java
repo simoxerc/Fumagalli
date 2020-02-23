@@ -28,9 +28,14 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegisterMarketHelper {
     private DatabaseReference mDBRef;
+
+
+    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
+    private final Pattern patternEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
     public void LoadChain(final Map chainMap, final List chainList, final Spinner spnChain, final Context context){
         mDBRef = FirebaseDatabase.getInstance().getReference().child("Chain");
@@ -97,8 +102,16 @@ public class RegisterMarketHelper {
             edtMarketPhone.setError("Telefono Obbligatorio");
             check = false;
         }
+        if(!patternNumberPhone.matcher(edtMarketPhone.getText().toString()).matches()){
+            edtMarketPhone.setError("Numero non valido");
+            check = false;
+        }
         if(edtMarketEmail.getText().toString().trim().isEmpty()){
             edtMarketEmail.setError("Email obbligatoria");
+            check = false;
+        }
+        if(!patternEmail.matcher(edtMarketEmail.getText().toString()).matches()){
+            edtMarketEmail.setError("Email non valida");
             check = false;
         }
         if(chain.getSelectedItem().toString().trim().isEmpty()){
