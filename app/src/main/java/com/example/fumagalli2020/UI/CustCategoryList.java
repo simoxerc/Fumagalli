@@ -59,8 +59,6 @@ public class CustCategoryList extends AppCompatActivity {
                         startActivity(a);
                         break;
                     case R.id.cust_navigation_profile:
-                        Intent b = new Intent(CustCategoryList.this,CustomerInfo.class);
-                        startActivity(b);
                         break;
                 }
                 return false;

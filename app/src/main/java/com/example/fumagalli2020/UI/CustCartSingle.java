@@ -81,8 +81,6 @@ public class CustCartSingle extends AppCompatActivity {
                     case R.id.cust_navigation_cart:
                         break;
                     case R.id.cust_navigation_profile:
-                        Intent b = new Intent(CustCartSingle.this,CustomerInfo.class);
-                        startActivity(b);
                         break;
                 }
                 return false;

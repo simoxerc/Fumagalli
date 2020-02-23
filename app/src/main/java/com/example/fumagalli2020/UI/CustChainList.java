@@ -56,8 +56,6 @@ public class CustChainList extends AppCompatActivity {
                         item.setChecked(true);
                         break;
                     case R.id.cust_navigation_profile:
-                        Intent b = new Intent(CustChainList.this,CustomerInfo.class);
-                        startActivity(b);
                         break;
                 }
                 return false;
