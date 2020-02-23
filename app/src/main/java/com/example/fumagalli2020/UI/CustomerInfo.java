@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,6 @@ public class CustomerInfo extends AppCompatActivity {
     private Button btnToCustModifyData;
     private Button btnSaveChanges;
     private CustomerInfoHelper customerInfoHelper;
-    public String oldEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,21 @@ public class CustomerInfo extends AppCompatActivity {
 
     }
 
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.itmCustOrders:
+                Intent intentOrders = new Intent(this, CustOrders.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("source",2);
+                intentOrders.putExtras(bundle);
+                startActivity(intentOrders);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -76,7 +91,6 @@ public class CustomerInfo extends AppCompatActivity {
             public void onClick(View v) {
                 btnToCustModifyData.setVisibility(View.INVISIBLE);
                 btnSaveChanges.setVisibility(View.VISIBLE);
-                oldEmail = edtCustEmail.getText().toString();
                 edtCustEmail.setEnabled(true);
                 edtCustMobile.setEnabled(true);
             }
@@ -85,7 +99,7 @@ public class CustomerInfo extends AppCompatActivity {
         btnSaveChanges.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                customerInfoHelper.ModifyCustomerInfo(edtCustEmail,edtCustMobile,CustomerInfo.this,btnSaveChanges,btnToCustModifyData,oldEmail);
+                customerInfoHelper.ModifyCustomerInfo(edtCustEmail,edtCustMobile,CustomerInfo.this,btnSaveChanges,btnToCustModifyData);
             }
         });
 
@@ -96,4 +110,11 @@ public class CustomerInfo extends AppCompatActivity {
         Intent c = new Intent(CustomerInfo.this,CustChainList.class);
         startActivity(c);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.cust_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
 }

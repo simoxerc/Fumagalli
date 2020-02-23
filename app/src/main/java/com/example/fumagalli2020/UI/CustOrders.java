@@ -93,6 +93,9 @@ public class CustOrders extends AppCompatActivity {
         }else if(source == 1){
             Intent intentToCart = new Intent(this,CustCartList.class);
             startActivity(intentToCart);
+        }else{
+            Intent intentToProfile = new Intent(this,CustomerInfo.class);
+            startActivity(intentToProfile);
         }
     }
 
