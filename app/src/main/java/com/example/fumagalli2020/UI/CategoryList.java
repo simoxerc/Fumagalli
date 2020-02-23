@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,6 +14,7 @@ import com.example.fumagalli2020.AdapterCategoryList;
 import com.example.fumagalli2020.Class.Category;
 import com.example.fumagalli2020.Helper.CategoryListHelper;
 import com.example.fumagalli2020.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,6 +54,23 @@ public class CategoryList extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        BottomNavigationView navigationView = findViewById(R.id.logistic_navigation);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.logistic_market:
+                        break;
+                    case R.id.logistic_orders:
+                        menuItem.setChecked(true);
+                        Intent intent = new Intent(CategoryList.this,LogisticOrders.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
             }
         });
     }

@@ -4,16 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
+import android.widget.ExpandableListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fumagalli2020.AdapterCategoryList;
-import com.example.fumagalli2020.AdapterProductList;
+import com.example.fumagalli2020.AdapterLogisticOrders;
+import com.example.fumagalli2020.Class.Order;
 import com.example.fumagalli2020.Class.Product;
-import com.example.fumagalli2020.Helper.ProductListHelper;
+import com.example.fumagalli2020.Helper.LogisticOrderHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,43 +22,48 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class ProductList extends AppCompatActivity {
-    protected Button btnAddProduct;
-    protected ListView listView;
-    protected List<Product> lstProduct;
-    protected String currentCategoryId;
-    protected String currentMarketId;
-    protected AdapterProductList adapterProductList;
-    protected ProductListHelper productListHelper;
+public class LogisticOrders extends AppCompatActivity {
+    protected AdapterLogisticOrders adapterLogisticOrders;
+    protected ExpandableListView lstOrders;
+    protected List<Order> orderList;
+    protected List<String> custfiscal;
+    protected HashMap<Order,List<Product>> orderListHashMap;
+    protected LogisticOrderHelper orderHelper;
     protected DatabaseReference databaseReference;
+    protected String currentMarketId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_list);
+        setContentView(R.layout.activity_order_list);
 
-        btnAddProduct = findViewById(R.id.btnLstAddProduct);
-        lstProduct = new LinkedList<Product>();
-        productListHelper = new ProductListHelper();
-        Bundle bundle = getIntent().getExtras();
-        currentCategoryId = bundle.getString("categoryId");
-        currentMarketId = bundle.getString("marketId");
+        lstOrders = findViewById(R.id.lstOrders);
+        orderHelper = new LogisticOrderHelper();
+        orderList = new ArrayList<Order>();
+        custfiscal = new ArrayList<String>();
+        orderListHashMap = new HashMap<Order,List<Product>>();
+
         String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUser).child("marketId");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentMarketId = dataSnapshot.getValue(String.class);
-                productListHelper.LoadProduct(lstProduct,currentMarketId,currentCategoryId,adapterProductList);
+                orderHelper.LoadLogistcOrders(orderList,orderListHashMap,adapterLogisticOrders,currentMarketId,custfiscal);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
+
 
         BottomNavigationView navigationView = findViewById(R.id.logistic_navigation);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,11 +71,11 @@ public class ProductList extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.logistic_market:
+                        menuItem.setChecked(true);
+                        Intent intent = new Intent(LogisticOrders.this,CategoryList.class);
+                        startActivity(intent);
                         break;
                     case R.id.logistic_orders:
-                        menuItem.setChecked(true);
-                        Intent intent = new Intent(ProductList.this,LogisticOrders.class);
-                        startActivity(intent);
                         break;
                 }
                 return false;
@@ -83,23 +87,15 @@ public class ProductList extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        listView = findViewById(R.id.productList);
-        adapterProductList = new AdapterProductList(this, R.layout.item_list_category, lstProduct);
-        listView.setAdapter(adapterProductList);
-        btnAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoregproduct();
-            }
-        });
+        adapterLogisticOrders = new AdapterLogisticOrders(this,orderList,orderListHashMap,custfiscal);
+        lstOrders.setAdapter(adapterLogisticOrders);
     }
 
-    private void gotoregproduct(){
-        Intent intent = new Intent(this,RegisterProduct.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("marketId",currentMarketId);
-        bundle.putString("categoryId",currentCategoryId);
-        intent.putExtras(bundle);
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        Intent intent = new Intent(this,CategoryList.class);
         startActivity(intent);
     }
+
 }

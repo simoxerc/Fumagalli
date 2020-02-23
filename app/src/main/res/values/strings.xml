@@ -84,4 +84,8 @@
     <string name="strEuro">€</string>
     <string name="strZeroEuro">0.0</string>
     <string name="strNext">Prosegui</string>
+    <string name="strLogisticMarket">Negozio</string>
+    <string name="strLogisticOrders">Ordini</string>
+    <string name="strX">x</string>
+
 </resources>

@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -47,14 +48,14 @@ public class CustCartList extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.navigation_shop:
+                    case R.id.cust_navigation_shop:
                         item.setChecked(true);
                         Intent a = new Intent(CustCartList.this, CustChainList.class);
                         startActivity(a);
                         break;
-                    case R.id.navigation_cart:
+                    case R.id.cust_navigation_cart:
                         break;
-                    case R.id.navigation_profile:
+                    case R.id.cust_navigation_profile:
                         break;
                 }
                 return false;
@@ -70,4 +71,27 @@ public class CustCartList extends AppCompatActivity {
     protected void onStart(){
         super.onStart();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.cust_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch(item.getItemId()){
+            case R.id.itmCustOrders:
+                Intent intentOrders = new Intent(this, CustOrders.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("source",1);
+                intentOrders.putExtras(bundle);
+                startActivity(intentOrders);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

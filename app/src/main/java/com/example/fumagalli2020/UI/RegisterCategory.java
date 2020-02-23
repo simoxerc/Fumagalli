@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import com.example.fumagalli2020.Helper.RegisterCategoryHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RegisterCategory extends AppCompatActivity {
     private Button btnRegCategory;
@@ -45,6 +47,23 @@ public class RegisterCategory extends AppCompatActivity {
         };
 
         registerCategoryHelper = new RegisterCategoryHelper();
+
+        BottomNavigationView navigationView = findViewById(R.id.logistic_navigation);
+        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.logistic_market:
+                        break;
+                    case R.id.logistic_orders:
+                        menuItem.setChecked(true);
+                        Intent intent = new Intent(RegisterCategory.this,LogisticOrders.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     @Override

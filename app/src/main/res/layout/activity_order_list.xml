@@ -5,23 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginBottom="?actionBarSize">
 
-        <ListView
-            android:id="@+id/lstCustChain"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ExpandableListView
+            android:id="@+id/lstOrders"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"/>
 
-        </ListView>
-
-    </RelativeLayout>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/logistic_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="0dp"
@@ -30,6 +28,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/cust_bottom_navigation" />
+        app:menu="@menu/logistic_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

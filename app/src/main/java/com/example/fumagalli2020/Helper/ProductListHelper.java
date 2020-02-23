@@ -31,7 +31,6 @@ public class ProductListHelper {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         };
         databasereference.addListenerForSingleValueEvent(valueEventListener);
