@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -14,6 +15,7 @@ import com.example.fumagalli2020.Class.Product;
 import com.example.fumagalli2020.Helper.CatalogHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -89,6 +91,11 @@ public class CustProductList extends AppCompatActivity {
                 bundle.putInt("source",0);
                 intentOrders.putExtras(bundle);
                 startActivity(intentOrders);
+                return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutcust = new Intent(this, Login.class);
+                startActivity(intentLogoutcust);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

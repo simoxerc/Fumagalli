@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fumagalli2020.Helper.CustomerInfoHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class CustomerInfo extends AppCompatActivity {
 
@@ -78,6 +80,11 @@ public class CustomerInfo extends AppCompatActivity {
                 intentOrders.putExtras(bundle);
                 startActivity(intentOrders);
                 return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutCust = new Intent(this, Login.class);
+                startActivity(intentLogoutCust);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -91,7 +98,6 @@ public class CustomerInfo extends AppCompatActivity {
             public void onClick(View v) {
                 btnToCustModifyData.setVisibility(View.INVISIBLE);
                 btnSaveChanges.setVisibility(View.VISIBLE);
-                edtCustEmail.setEnabled(true);
                 edtCustMobile.setEnabled(true);
             }
         });
@@ -99,7 +105,7 @@ public class CustomerInfo extends AppCompatActivity {
         btnSaveChanges.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                customerInfoHelper.ModifyCustomerInfo(edtCustEmail,edtCustMobile,CustomerInfo.this,btnSaveChanges,btnToCustModifyData);
+                customerInfoHelper.ModifyCustomerInfo(edtCustMobile,CustomerInfo.this,btnSaveChanges,btnToCustModifyData);
             }
         });
 

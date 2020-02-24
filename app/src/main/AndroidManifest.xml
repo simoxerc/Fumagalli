@@ -185,6 +185,23 @@
             android:label="Info Cliente"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".UI.EmployeeModify"
+            android:label="Modifica Dipendente"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.EmployeeList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.ProductModify"
+            android:label="Modifica Prodotto"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.ProductList">
+            </meta-data>
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

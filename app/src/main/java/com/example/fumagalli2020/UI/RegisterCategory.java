@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import com.example.fumagalli2020.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterCategory extends AppCompatActivity {
     private Button btnRegCategory;
@@ -80,5 +82,23 @@ public class RegisterCategory extends AppCompatActivity {
     public void gotocategorylist(){
         Intent intent = new Intent(this,CategoryList.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itmAdminLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentAdmLogout = new Intent(this,Login.class);
+                startActivity(intentAdmLogout);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -2,6 +2,8 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -136,6 +138,13 @@ public class RegisterEmployee extends AppCompatActivity {
             case android.R.id.home:
                 if(source == 1)
                     onBackPressed();
+            case R.id.itmAdminLogout:
+                if(source == 1){
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intentAdmLogout = new Intent(this, Login.class);
+                    startActivity(intentAdmLogout);
+                    return true;
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -159,5 +168,10 @@ public class RegisterEmployee extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(source == 1)
+            getMenuInflater().inflate(R.menu.admin_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

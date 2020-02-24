@@ -14,6 +14,7 @@ import com.example.fumagalli2020.Class.Category;
 import com.example.fumagalli2020.Helper.CatalogHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -89,6 +90,11 @@ public class CustCategoryList extends AppCompatActivity {
                 bundle.putInt("source",0);
                 intentOrders.putExtras(bundle);
                 startActivity(intentOrders);
+                return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutCust = new Intent(this,Login.class);
+                startActivity(intentLogoutCust);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

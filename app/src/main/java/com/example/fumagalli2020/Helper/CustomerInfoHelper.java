@@ -54,7 +54,7 @@ public class CustomerInfoHelper {
         });
     }
 
-    public void ModifyCustomerInfo(final EditText edtCustEmail, EditText edtCustMobile, final Context context, final Button btnSaveChanges, final Button btnToCustModifyData){
+    public void ModifyCustomerInfo(final EditText edtCustMobile, final Context context, final Button btnSaveChanges, final Button btnToCustModifyData){
         if(CheckModifiedCustomerInfo(edtCustMobile)){
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
             String newMobile = edtCustMobile.getText().toString();
@@ -64,7 +64,7 @@ public class CustomerInfoHelper {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(context,"Dati aggiornati correttamente!",Toast.LENGTH_LONG).show();
-                        edtCustEmail.setEnabled(false);
+                        edtCustMobile.setEnabled(false);
                         btnSaveChanges.setVisibility(View.INVISIBLE);
                         btnToCustModifyData.setVisibility(View.VISIBLE);
                     }

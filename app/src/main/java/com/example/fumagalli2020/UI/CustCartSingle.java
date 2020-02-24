@@ -114,6 +114,11 @@ public class CustCartSingle extends AppCompatActivity {
                 intentOrders.putExtras(bundle);
                 startActivity(intentOrders);
                 return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutCust = new Intent(this,Login.class);
+                startActivity(intentLogoutCust);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

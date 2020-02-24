@@ -2,6 +2,7 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -96,5 +97,23 @@ public class CategoryList extends AppCompatActivity {
         Intent intent = new Intent(this,RegisterCategory.class);
         intent.putExtras(bundle);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.itmAdminLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentAdmLogout = new Intent(this,Login.class);
+                startActivity(intentAdmLogout);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

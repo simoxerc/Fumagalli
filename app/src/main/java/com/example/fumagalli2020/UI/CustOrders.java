@@ -79,6 +79,11 @@ public class CustOrders extends AppCompatActivity {
                 Intent intentOrders = new Intent(this, CustOrders.class);
                 startActivity(intentOrders);
                 return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutCust = new Intent(this,Login.class);
+                startActivity(intentLogoutCust);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

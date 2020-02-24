@@ -2,12 +2,15 @@ package com.example.fumagalli2020;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.fumagalli2020.Class.Employee;
+import com.example.fumagalli2020.UI.EmployeeModify;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +43,7 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
         TextView tvEmployeeWork = convertView.findViewById(R.id.tvItemWorkEmployee);
         TextView tvEmployeeCode = convertView.findViewById(R.id.tvItemCodeEmployee);
         ImageButton btnItemDeleteEmployee = convertView.findViewById(R.id.btnItemDeleteEmployee);
+        ImageButton btnModifyEmployee = convertView.findViewById(R.id.btnItemModifyEmployee);
 
         final Employee employee = getItem(position);
 
@@ -84,6 +89,22 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
             @Override
             public void onClick(View v) {
                 alertDialog.show();
+            }
+        });
+
+        btnModifyEmployee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(parent.getContext(), EmployeeModify.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("name",employee.getName());
+                bundle.putString("surname",employee.getSurname());
+                bundle.putString("phone",employee.getMobile());
+                bundle.putString("type",employee.getType());
+                bundle.putString("marketId",employee.getMarketId());
+                bundle.putString("employeeId",employee.getEmployeeId());
+                intent.putExtras(bundle);
+                parent.getContext().startActivity(intent);
             }
         });
 
