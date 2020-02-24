@@ -81,7 +81,15 @@ public class EmployeeModify extends AppCompatActivity {
             }
         });
 
-        employeeModifyHelper.LoadEmployee(tvName,tvSurname,edtPhone,spnType,employeeId);
+        if(type.equals("1")){
+            spnType.setSelection(0);
+        }else{
+            spnType.setSelection(1);
+        }
+
+        tvName.setText(name);
+        tvSurname.setText(surname);
+        edtPhone.setText(phone);
 
 
     }

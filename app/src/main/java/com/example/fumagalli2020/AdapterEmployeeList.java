@@ -65,12 +65,12 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(parent.getContext(), "Carrello eliminato", Toast.LENGTH_LONG).show();
+                            Toast.makeText(parent.getContext(), "Dipendente Eliminato", Toast.LENGTH_LONG).show();
                             remove(employee);
                             notifyDataSetChanged();
                         }
                         else
-                            Toast.makeText(parent.getContext(),"Eliminazione carrello non riuscita",Toast.LENGTH_LONG).show();
+                            Toast.makeText(parent.getContext(),"Eliminazione dipendente non riuscita",Toast.LENGTH_LONG).show();
                     }
                 });
 
