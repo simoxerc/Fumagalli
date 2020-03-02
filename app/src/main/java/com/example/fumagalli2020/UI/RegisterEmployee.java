@@ -2,6 +2,8 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -64,9 +66,9 @@ public class RegisterEmployee extends AppCompatActivity {
         helper = new RegisterEmployeeHelper();
 
         typeList.add("Amministratore Negozio");
-        if(source == 1) {
+        if(source == 1)
             typeList.add("Addetto alla Logistica");
-        }
+
 
         adptTypeEmployee = new ArrayAdapter<String>(getApplicationContext(), R.layout.first_custom_spinner,typeList);
         adptTypeEmployee.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -133,9 +135,21 @@ public class RegisterEmployee extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         switch (item.getItemId()) {
+
             case android.R.id.home:
-                if(source == 1)
+                if (source == 1)
                     onBackPressed();
+<<<<<<< HEAD
+                return true;
+=======
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
+            case R.id.itmAdminLogout:
+                if(source == 1){
+                    FirebaseAuth.getInstance().signOut();
+                    Intent intentAdmLogout = new Intent(this, Login.class);
+                    startActivity(intentAdmLogout);
+                    return true;
+                }
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -143,7 +157,9 @@ public class RegisterEmployee extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        super.onBackPressed();
+        if(source == 1) {
+            super.onBackPressed();
+        }
     }
 
     private void createnewfirebaseauth(){
@@ -159,5 +175,10 @@ public class RegisterEmployee extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        if(source == 1)
+            getMenuInflater().inflate(R.menu.admin_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

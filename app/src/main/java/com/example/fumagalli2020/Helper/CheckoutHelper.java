@@ -66,7 +66,7 @@ public class CheckoutHelper {
             boolean first = false;
             boolean second = false;
             final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            Order order = new Order(orderId,creditcard,pickdate,picktime,currentUser,total,"Pending");
+            Order order = new Order(orderId,creditcard,pickdate,picktime,currentUser,total,"In Attesa di Conferma");
             final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
             final DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
             try {

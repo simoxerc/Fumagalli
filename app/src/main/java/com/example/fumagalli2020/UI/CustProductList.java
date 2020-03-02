@@ -2,6 +2,8 @@ package com.example.fumagalli2020.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
@@ -13,6 +15,7 @@ import com.example.fumagalli2020.Class.Product;
 import com.example.fumagalli2020.Helper.CatalogHelper;
 import com.example.fumagalli2020.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -53,14 +56,16 @@ public class CustProductList extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.navigation_shop:
+                    case R.id.cust_navigation_shop:
                         break;
-                    case R.id.navigation_cart:
+                    case R.id.cust_navigation_cart:
                         item.setChecked(true);
                         Intent a = new Intent(CustProductList.this, CustCartList.class);
                         startActivity(a);
                         break;
-                    case R.id.navigation_profile:
+                    case R.id.cust_navigation_profile:
+                        Intent b = new Intent(CustProductList.this,CustomerInfo.class);
+                        startActivity(b);
                         break;
                 }
                 return false;
@@ -80,6 +85,18 @@ public class CustProductList extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 return true;
+            case R.id.itmCustOrders:
+                Intent intentOrders = new Intent(this, CustOrders.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("source",0);
+                intentOrders.putExtras(bundle);
+                startActivity(intentOrders);
+                return true;
+            case R.id.itmCustLogout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intentLogoutcust = new Intent(this, Login.class);
+                startActivity(intentLogoutcust);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -94,6 +111,13 @@ public class CustProductList extends AppCompatActivity {
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.cust_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
 
 
 

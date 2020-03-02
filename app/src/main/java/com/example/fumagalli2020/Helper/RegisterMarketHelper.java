@@ -28,9 +28,19 @@ import android.view.WindowManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class RegisterMarketHelper {
     private DatabaseReference mDBRef;
+
+
+<<<<<<< HEAD
+//    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
+    private final Pattern patternNumberPhone = Pattern.compile("^[0-9]{9,10}$");
+=======
+    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
+    private final Pattern patternEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
     public void LoadChain(final Map chainMap, final List chainList, final Spinner spnChain, final Context context){
         mDBRef = FirebaseDatabase.getInstance().getReference().child("Chain");
@@ -55,22 +65,22 @@ public class RegisterMarketHelper {
         mDBRef.addListenerForSingleValueEvent(valueEventListener);
     }
 
-    public void RegisterMarket(Spinner chain, final EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,
+    public String RegisterMarket(Spinner chain, final EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,
                                  EditText edtMarketCAP, EditText edtMarketPhone, EditText edtMarketEmail, List<String> businessHour, List<Boolean> continuedSchedule, List<Boolean> closedDays,
                                  final Context context, Map chainMap, OnCompleteListener<Void> onCompleteListener){
-        String marketid = "";
+        String marketId = "";
         if(checkfield(chain,edtMarketName,edtMarketCity,edtMarketAddress,edtMarketCAP,edtMarketPhone,edtMarketEmail,businessHour, continuedSchedule, closedDays,context)){
             String name = edtMarketName.getText().toString();
             String address = edtMarketAddress.getText().toString()+", "+edtMarketCity.getText().toString()+" "+edtMarketCAP.getText().toString();
             String email = edtMarketEmail.getText().toString();
             String phone = edtMarketPhone.getText().toString();
             String indexchain = getkey(chainMap,chain.getSelectedItem().toString());
-            marketid = indexchain + edtMarketCAP.getText().toString()+edtMarketPhone.getText().toString();
-            final Market market = new Market(name,address,phone,email, marketid, indexchain,businessHour,continuedSchedule,closedDays);
-            mDBRef = FirebaseDatabase.getInstance().getReference().child("Market").child(marketid);
+            marketId = indexchain + edtMarketCAP.getText().toString()+edtMarketPhone.getText().toString();
+            final Market market = new Market(name,address,phone,email, marketId, indexchain,businessHour,continuedSchedule,closedDays);
+            mDBRef = FirebaseDatabase.getInstance().getReference().child("Market").child(marketId);
             mDBRef.setValue(market).addOnCompleteListener(onCompleteListener);
         }
-
+        return marketId;
     }
 
     private boolean checkfield(Spinner chain, EditText edtMarketName, EditText edtMarketCity, EditText edtMarketAddress,
@@ -97,8 +107,16 @@ public class RegisterMarketHelper {
             edtMarketPhone.setError("Telefono Obbligatorio");
             check = false;
         }
+        if(!patternNumberPhone.matcher(edtMarketPhone.getText().toString()).matches()){
+            edtMarketPhone.setError("Numero non valido");
+            check = false;
+        }
         if(edtMarketEmail.getText().toString().trim().isEmpty()){
             edtMarketEmail.setError("Email obbligatoria");
+            check = false;
+        }
+        if(!patternEmail.matcher(edtMarketEmail.getText().toString()).matches()){
+            edtMarketEmail.setError("Email non valida");
             check = false;
         }
         if(chain.getSelectedItem().toString().trim().isEmpty()){

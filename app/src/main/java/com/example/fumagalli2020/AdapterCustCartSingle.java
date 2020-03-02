@@ -59,12 +59,13 @@ public class AdapterCustCartSingle extends ArrayAdapter<Product> {
 
 
         tvNameProduct.setText(product.getName());
-        if(product.getType().equals("Confezionato"))
+        if(product.getType().equals("Confezionato")) {
             tvPriceProduct.setText(("€" + product.getPrice() + "/pz"));
-        else
-            tvPriceProduct.setText(("€" + product.getPrice() + "/h"));
-
-        tvAvaibleProduct.setText(("Disp. " + product.getQuantity()));
+            tvAvaibleProduct.setText(("Disp. " + product.getQuantity() + " pz"));
+        }else {
+            tvPriceProduct.setText(("€" + product.getPrice() + "/kg"));
+            tvAvaibleProduct.setText(("Disp. " + product.getQuantity() +" kg"));
+        }
         tvQntSelected.setText(product.getQntSelected());
       double total=0;
         for (Product item : object) {

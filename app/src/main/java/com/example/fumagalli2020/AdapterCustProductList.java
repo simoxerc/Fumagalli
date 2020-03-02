@@ -56,10 +56,11 @@ public class AdapterCustProductList extends ArrayAdapter<Product> {
         tvProductType.setText(product.getType());
         if(tvProductType.getText().toString().equals("Confezionato")) {
             tvProductPrice.setText(("€" + product.getPrice() + " /pz"));
+            tvProductQuantity.setText(("Disp. " + product.getQuantity() + " pz"));
         }else{
-            tvProductPrice.setText(("€" + product.getPrice() + " /h"));
+            tvProductPrice.setText(("€" + product.getPrice() + " /kg"));
+            tvProductQuantity.setText(("Disp. " + product.getQuantity() + " kg"));
         }
-        tvProductQuantity.setText(("Disp. " + product.getQuantity()));
 
         btnAddProductToCart.setOnClickListener(new View.OnClickListener() {
             @Override

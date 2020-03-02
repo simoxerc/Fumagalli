@@ -38,7 +38,7 @@ public class EmployeeListHelper {
 
             }
         };
-        databasereference.addListenerForSingleValueEvent(valueEventListener);
+        databasereference.addValueEventListener(valueEventListener);
     }
 
 }

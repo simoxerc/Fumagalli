@@ -9,7 +9,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 public class LoginHelper {
-    public boolean login(EditText edtEmail, TextInputLayout tilPassword){
+    public void login(EditText edtEmail, TextInputLayout tilPassword, OnCompleteListener listener){
         String email,pwd;
         FirebaseAuth mAuth;
         mAuth = FirebaseAuth.getInstance();
@@ -20,16 +20,7 @@ public class LoginHelper {
         else if(pwd.trim().isEmpty())
             tilPassword.getEditText().setError("");
         else{
-            mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                }
-            });
+            mAuth.signInWithEmailAndPassword(email,pwd).addOnCompleteListener(listener);
         }
-        if(mAuth.getCurrentUser() == null)
-            return false;
-        else
-            return true;
     }
-
 }

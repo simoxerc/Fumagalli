@@ -84,4 +84,16 @@
     <string name="strEuro">€</string>
     <string name="strZeroEuro">0.0</string>
     <string name="strNext">Prosegui</string>
+    <string name="strLogisticMarket">Negozio</string>
+    <string name="strLogisticOrders">Ordini</string>
+    <string name="strX">x</string>
+    <string name="strModifyInfo">Modifica Dati</string>
+    <string name="strModifyHours">Modifica Orari Negozio</string>
+    <string name="strAcceptModify"> Salva modifiche</string>
+    <string name="strEmployee">Dipendenti</string>
+    <string name="strProductOrigin">Origine</string>
+    <string name="strProductPrice">Prezzo</string>
+    <string name="strProductPackage">Data Confezionamento</string>
+    <string name="strProductExpire">Data Scadenza</string>
+    <string name="strWork">Mansione</string>
 </resources>

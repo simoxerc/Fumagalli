@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?actionBarSize">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvProductModifyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/strProductOrigin"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <EditText
+                android:id="@+id/edtModProductOrigin"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/strQuantity"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <EditText
+                android:id="@+id/edtModProductQuantity"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/strProductPrice"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <EditText
+                android:id="@+id/edtModProductPrice"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/strProductPackage"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <EditText
+                android:id="@+id/edtModProductPackageDate"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/strProductExpire"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/clBlack" />
+
+            <EditText
+                android:id="@+id/edtModProductExpireDate"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="42dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_regular"
+                />
+
+            <Button
+                android:id="@+id/btnModifyProduct"
+                android:layout_width="150dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                android:text="@string/strAcceptModify"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

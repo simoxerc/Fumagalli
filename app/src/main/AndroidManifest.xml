@@ -66,21 +66,24 @@
         </activity>
         <activity
             android:name=".UI.RegisterMarket"
-            android:label="@string/strReadTerms"
+            android:label="Registra Negozio"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".UI.RegisterEmployee"
-            android:label="Registra Dipendente"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".UI.EmployeeList">
-            </meta-data>
-        </activity>
+
 
         <activity android:name=".UI.EmployeeList"
             android:label="Lista Dipendenti"
             android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".UI.RegisterEmployee"
+            android:label="Registra Dipendente"
+            android:screenOrientation="portrait">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".UI.EmployeeList">
+        </meta-data>
         </activity>
 
         <activity
@@ -141,11 +144,19 @@
             android:name=".UI.CustProductList"
             android:label="Lista Prodotti"
             android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustCategoryList">
+            </meta-data>
         </activity>
         <activity
             android:name=".UI.CustCartList"
             android:label="Carrelli"
             android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.CustProductList">
+            </meta-data>
         </activity>
         <activity android:name=".UI.CustCartSingle"
             android:label="Carrello"
@@ -162,6 +173,44 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.CustCartSingle">
+            </meta-data>
+        </activity>
+        <activity android:name=".UI.CustOrders"
+            android:label="@string/strMyOrdersPage"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.Login">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.LogisticOrders"
+            android:label="Ordini"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".UI.MarketInfo"
+            android:label="Info Negozio"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".UI.CustomerInfo"
+            android:label="Info Cliente"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".UI.EmployeeModify"
+            android:label="Modifica Dipendente"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.EmployeeList">
+            </meta-data>
+        </activity>
+        <activity
+            android:name=".UI.ProductModify"
+            android:label="Modifica Prodotto"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.ProductList">
             </meta-data>
         </activity>
     </application>
