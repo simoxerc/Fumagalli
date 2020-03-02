@@ -23,22 +23,12 @@ import com.example.fumagalli2020.Class.Employee;
 import com.example.fumagalli2020.UI.EmployeeModify;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-=======
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 
 import java.util.List;
 
@@ -52,15 +42,7 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
     }
 
     @Override
-<<<<<<< HEAD
-<<<<<<< HEAD
     public View getView(final int position, View convertView, final ViewGroup parent) {
-=======
-    public View getView(int position, View convertView, final ViewGroup parent) {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-    public View getView(int position, View convertView, final ViewGroup parent) {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         assert inflater != null;
@@ -85,8 +67,6 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
         builder.setMessage("Vuoi davvero rimuovere il dipendente?");
         builder.setCancelable(false);
         builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
-<<<<<<< HEAD
-<<<<<<< HEAD
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -118,26 +98,6 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
-=======
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(employee.getEmployeeId());
-                reference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(parent.getContext(), "Dipendente Eliminato", Toast.LENGTH_LONG).show();
-                            remove(employee);
-                            notifyDataSetChanged();
-                        }
-                        else
-                            Toast.makeText(parent.getContext(),"Eliminazione dipendente non riuscita",Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
                     }
                 });
 
@@ -146,14 +106,6 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
             }
         });
 
@@ -162,8 +114,6 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
         btnItemDeleteEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-<<<<<<< HEAD
                 employeeId = employee.getEmployeeId();
                 final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Users");
                 databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -183,10 +133,6 @@ public class AdapterEmployeeList extends ArrayAdapter<Employee> {
 
                     }
                 });
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
                 alertDialog.show();
             }
         });

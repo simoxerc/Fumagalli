@@ -34,16 +34,8 @@ public class RegisterMarketHelper {
     private DatabaseReference mDBRef;
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 //    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
     private final Pattern patternNumberPhone = Pattern.compile("^[0-9]{9,10}$");
-=======
-    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
     private final Pattern patternEmail = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
     public void LoadChain(final Map chainMap, final List chainList, final Spinner spnChain, final Context context){

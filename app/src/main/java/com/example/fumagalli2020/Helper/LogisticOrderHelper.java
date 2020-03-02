@@ -56,15 +56,7 @@ public class LogisticOrderHelper {
     public void btnConfirmOrder(final String orderId, final String newstate, final String customerId, final Context context){
         final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-<<<<<<< HEAD
-<<<<<<< HEAD
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-=======
-        databaseReference.addValueEventListener(new ValueEventListener() {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-        databaseReference.addValueEventListener(new ValueEventListener() {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String marketId = dataSnapshot.child("Users").child(currentUser).child("marketId").getValue(String.class);
@@ -91,15 +83,7 @@ public class LogisticOrderHelper {
     public void btnDeleteOrder(final String orderId, final String newState, final String customerId, final Context context){
         final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-<<<<<<< HEAD
-<<<<<<< HEAD
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-=======
-        databaseReference.addValueEventListener(new ValueEventListener() {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-        databaseReference.addValueEventListener(new ValueEventListener() {
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String marketId = dataSnapshot.child("Users").child(currentUser).child("marketId").getValue(String.class);

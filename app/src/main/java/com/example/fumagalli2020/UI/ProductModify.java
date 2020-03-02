@@ -131,20 +131,12 @@ public class ProductModify extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-<<<<<<< HEAD
-<<<<<<< HEAD
         Bundle backthings = new Bundle();
         backthings.putString("categoryId",categoryId);
         backthings.putString("marketId",marketId);
         Intent backintent = new Intent(this,ProductList.class);
         backintent.putExtras(backthings);
         startActivity(backintent);
-=======
-        super.onBackPressed();
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
-        super.onBackPressed();
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
     }
 
     @Override
@@ -156,15 +148,9 @@ public class ProductModify extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-<<<<<<< HEAD
-<<<<<<< HEAD
             case android.R.id.home:
                 onBackPressed();
                 return true;
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
-=======
->>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
             case R.id.itmAdminLogout:
                 FirebaseAuth.getInstance().signOut();
                 Intent intentAdmLogout = new Intent(this,Login.class);
