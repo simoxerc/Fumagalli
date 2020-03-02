@@ -130,7 +130,11 @@ public class AdapterCustOrders extends BaseExpandableListAdapter {
         tvStateOrder.setText(order.getOrderState());
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if(order.getOrderState().equals("In Attesa di Conferma")){
+=======
+        if(order.getOrderState().equals("In Attesa di conferma")){
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
         if(order.getOrderState().equals("In Attesa di conferma")){
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575

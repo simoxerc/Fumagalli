@@ -140,7 +140,10 @@ public class RegisterEmployee extends AppCompatActivity {
                 if (source == 1)
                     onBackPressed();
 <<<<<<< HEAD
+<<<<<<< HEAD
                 return true;
+=======
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
             case R.id.itmAdminLogout:

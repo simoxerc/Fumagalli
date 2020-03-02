@@ -29,8 +29,13 @@ public class AdapterLogisticOrders extends BaseExpandableListAdapter {
     private List<String> custfiscal;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public AdapterLogisticOrders(Context context, List<Order> listOrders, HashMap<Order,
             List<Product>> listProducts, List<String> custfiscal) {
+=======
+    public AdapterLogisticOrders(Context context, List<Order> listOrders,
+                                 HashMap<Order, List<Product>> listProducts, List<String> custfiscal) {
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
     public AdapterLogisticOrders(Context context, List<Order> listOrders,
                                  HashMap<Order, List<Product>> listProducts, List<String> custfiscal) {
@@ -141,7 +146,11 @@ public class AdapterLogisticOrders extends BaseExpandableListAdapter {
             @Override
             public void onClick(View v) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 if(!order.getOrderState().equals("Confermato")) {
+=======
+                if(!order.getOrderState().equals("Confirmed")) {
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
                 if(!order.getOrderState().equals("Confirmed")) {
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575

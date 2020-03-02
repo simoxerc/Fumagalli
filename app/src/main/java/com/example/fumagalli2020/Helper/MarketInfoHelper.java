@@ -22,9 +22,13 @@ import java.util.regex.Pattern;
 
 public class MarketInfoHelper {
 <<<<<<< HEAD
+<<<<<<< HEAD
 //    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
 
     private final Pattern patternNumberPhone = Pattern.compile("^[0-9]{9,10}$");
+=======
+    private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
     private final Pattern patternNumberPhone = Pattern.compile("^3\\d{2}[. ]??\\d{6,7}([,;]/^((00|" + ")39[. ]??)??3\\d{2}[. ]??\\d{6,7})*$");
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575

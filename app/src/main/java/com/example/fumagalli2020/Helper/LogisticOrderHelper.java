@@ -57,7 +57,11 @@ public class LogisticOrderHelper {
         final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 <<<<<<< HEAD
+<<<<<<< HEAD
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+=======
+        databaseReference.addValueEventListener(new ValueEventListener() {
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
         databaseReference.addValueEventListener(new ValueEventListener() {
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
@@ -88,7 +92,11 @@ public class LogisticOrderHelper {
         final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
         final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 <<<<<<< HEAD
+<<<<<<< HEAD
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+=======
+        databaseReference.addValueEventListener(new ValueEventListener() {
+>>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
 =======
         databaseReference.addValueEventListener(new ValueEventListener() {
 >>>>>>> 650d922d07e1a4390bc1c75c9085c4d76a663575
